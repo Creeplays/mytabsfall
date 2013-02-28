@@ -24,10 +24,14 @@ class TabsParserHelper
 			return match_first_result
 		end
 
-		match_rest = /((?>\-\d{1,2}[hpbs]{1}\d{1,2})|(?>\-\d{1,2})|(?>\-))+/.match(str,1)
+		if (str.slice(-1..-1) != '|')
+			return false
+		end		
+
+		match_rest = /((?>\-\d{1,2}[hpbs]{1}\d{1,2})|(?>\-\d{1,2})|(?>\-))+/.match(str.slice(1..-2))
 		
 		if (!match_rest.nil?)
-			match_rest_result = match_rest.to_s == str.slice(1..-1) 
+			match_rest_result = match_rest.to_s == str.slice(1..-2) 
 		end
 
 		return (match_first_result && match_rest_result)
