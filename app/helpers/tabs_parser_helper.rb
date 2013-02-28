@@ -1,5 +1,5 @@
-class TabsParserHelper
-	def validate( str )
+module TabsParserHelper
+	def self.validate( str )
 		#refactor into strategy if required
 		#match first char is | or  -
 		#either -, 1|2digit , 1|2digit<h/p/b/s>2digit
